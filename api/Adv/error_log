@@ -1,0 +1,10 @@
+[14-Jun-2021 14:44:07 UTC] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/api/objects/adv.php:36
+Stack trace:
+#0 /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/api/Adv/getAdvIds.php(18): Adv->getAdvIds()
+#1 {main}
+  thrown in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/api/objects/adv.php on line 36
+[14-Jun-2021 14:50:46 UTC] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/api/objects/adv.php:36
+Stack trace:
+#0 /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/api/Adv/getAdvIds.php(18): Adv->getAdvIds()
+#1 {main}
+  thrown in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/api/objects/adv.php on line 36

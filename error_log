@@ -1,0 +1,159 @@
+[10-Jun-2021 06:37:18 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[10-Jun-2021 06:37:18 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[10-Jun-2021 06:42:38 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[10-Jun-2021 06:42:38 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[10-Jun-2021 06:42:38 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[10-Jun-2021 06:42:38 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[10-Jun-2021 06:42:41 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[10-Jun-2021 06:42:41 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[10-Jun-2021 06:42:55 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[10-Jun-2021 06:42:55 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[10-Jun-2021 06:43:08 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[10-Jun-2021 06:43:08 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[10-Jun-2021 06:43:10 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[10-Jun-2021 06:43:10 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[10-Jun-2021 06:47:07 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[10-Jun-2021 06:47:07 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[10-Jun-2021 06:47:07 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[10-Jun-2021 06:47:07 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[11-Jun-2021 03:23:53 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[11-Jun-2021 03:23:53 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[11-Jun-2021 09:20:19 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[11-Jun-2021 09:20:19 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[11-Jun-2021 09:20:38 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'reference_app' in 'where clause' in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/apps.php:20
+Stack trace:
+#0 /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/apps.php(20): PDOStatement->execute()
+#1 {main}
+  thrown in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/apps.php on line 20
+[11-Jun-2021 09:20:48 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'reference_app' in 'where clause' in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/apps.php:20
+Stack trace:
+#0 /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/apps.php(20): PDOStatement->execute()
+#1 {main}
+  thrown in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/apps.php on line 20
+[11-Jun-2021 09:21:10 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'reference_app' in 'where clause' in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/apps.php:20
+Stack trace:
+#0 /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/apps.php(20): PDOStatement->execute()
+#1 {main}
+  thrown in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/apps.php on line 20
+[11-Jun-2021 09:26:29 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[11-Jun-2021 09:26:29 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[11-Jun-2021 09:26:29 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[11-Jun-2021 09:26:29 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[11-Jun-2021 09:26:32 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[11-Jun-2021 09:26:32 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[11-Jun-2021 09:49:31 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[11-Jun-2021 09:49:31 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[11-Jun-2021 10:15:21 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[11-Jun-2021 10:15:21 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[11-Jun-2021 10:16:46 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[11-Jun-2021 10:16:46 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[11-Jun-2021 10:21:23 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[11-Jun-2021 10:21:23 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[11-Jun-2021 10:21:24 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[11-Jun-2021 10:21:24 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[11-Jun-2021 10:21:26 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[11-Jun-2021 10:21:26 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[11-Jun-2021 10:21:26 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[11-Jun-2021 10:21:26 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[11-Jun-2021 10:21:27 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[11-Jun-2021 10:21:27 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[11-Jun-2021 10:21:29 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[11-Jun-2021 10:21:29 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[11-Jun-2021 10:44:18 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/appData.php on line 3
+[11-Jun-2021 10:44:18 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[11-Jun-2021 11:07:31 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[11-Jun-2021 11:07:31 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[11-Jun-2021 11:07:40 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[11-Jun-2021 11:07:40 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 04:36:30 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 04:36:30 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:31:40 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:31:40 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:31:40 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:31:40 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:31:40 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:31:40 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:31:40 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:31:40 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:31:40 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:31:40 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:31:41 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:31:41 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:31:41 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:31:41 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:31:41 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:31:41 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:31:41 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:31:41 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:31:41 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:31:41 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:31:41 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:31:41 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:32:05 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:32:05 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:32:06 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:32:06 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:32:06 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:32:06 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:32:06 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:32:06 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:32:06 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:32:06 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:32:06 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:32:06 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:32:06 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:32:06 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:32:07 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:32:07 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:32:07 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:32:07 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:32:07 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:32:07 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:32:07 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:32:07 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:32:22 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:32:22 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:32:23 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:32:23 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:32:23 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:32:23 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:32:23 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:32:23 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:32:23 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:32:23 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:32:23 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:32:23 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:32:23 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:32:23 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:32:23 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:32:23 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:32:24 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:32:24 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:32:24 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:32:24 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:32:24 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:32:24 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[12-Jun-2021 15:32:55 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[12-Jun-2021 15:32:55 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[13-Jun-2021 05:45:56 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[13-Jun-2021 05:45:56 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[13-Jun-2021 07:37:17 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/appData.php on line 3
+[13-Jun-2021 07:37:17 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[13-Jun-2021 09:11:07 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[13-Jun-2021 09:11:07 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[14-Jun-2021 14:41:50 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[14-Jun-2021 14:41:50 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[14-Jun-2021 14:51:00 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[14-Jun-2021 14:51:00 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[14-Jun-2021 15:30:33 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/index.php on line 3
+[14-Jun-2021 15:30:33 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[14-Jun-2021 15:41:44 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/apps.php on line 3
+[14-Jun-2021 15:41:44 UTC] PHP Notice:  Undefined index: username in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php on line 17
+[14-Jun-2021 15:42:01 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2) in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/database/dbconfig.php:11
+Stack trace:
+#0 /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/database/dbconfig.php(11): PDO->__construct('mysql:host=loca...', 'myadminpanel', 'myadminpanel@12...')
+#1 /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/security.php(3): include('/home/c387hwlhy...')
+#2 /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/includes/navibar.php(2): include('/home/c387hwlhy...')
+#3 /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/apps.php(7): include('/home/c387hwlhy...')
+#4 {main}
+  thrown in /home/c387hwlhy2lw/public_html/myadminpanel.shauryinfotech.info/database/dbconfig.php on line 11
