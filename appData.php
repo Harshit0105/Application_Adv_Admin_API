@@ -31,6 +31,45 @@ if(isset($_POST['delete_apk_submit'])){
     echo("<script>location.href = '".BASEPATH."/appData.php?id=".$refId."';</script>");
 }
 
+if(isset($_POST['delete_image_submit'])){
+    $appId=$_POST['appId'];     
+    $ImageId=$_POST['imageId'];
+    $queryApp="select * from sliders where Id=".$ImageId;
+    $stmt=$connection->prepare($queryApp);
+    $stmt->execute();
+    $rowApp = $stmt->fetch(PDO::FETCH_ASSOC); 
+    if($rowApp['image']!=null){
+        unlink($rowApp['image']); 
+        $app_query = "DELETE FROM sliders WHERE Id='$ImageId' ";    
+        $stmt=$connection->prepare($app_query);
+        $stmt->execute();       
+    }    
+    $_SESSION['msg']="12";
+    echo("<script>location.href = '".BASEPATH."/appData.php?id=".$appId."';</script>");
+}
+
+
+if(isset($_POST['slider_image_add']))
+{
+    $errors= array();
+    $imagepath_name = $_FILES['image']['name'];	  
+    $appName=$_POST['imageAppName'];
+    $ext=pathinfo($imagepath_name,PATHINFO_EXTENSION);
+	//   $videotitle =   str_replace(".zip","",$videopzip_name);   /*$_POST['videotitle'];*/    	    
+    $imagepath = "AppImages/Sliders/".str_replace(" ","_",$appName)."_".time().".".$ext; 
+           
+    
+    move_uploaded_file($_FILES['image']['tmp_name'],$imagepath);	       	         	   		
+    $query = "INSERT INTO sliders (app_id,image) VALUES ( :appId,:image)";
+    $stmt=$connection->prepare($query);
+    $stmt->execute(['appId'=>$_POST['imageAppId'],'image'=>$imagepath]);
+            // echo "App Updated Succ...";
+    $_SESSION['msg']="10";
+    echo("<script>location.href = '".BASEPATH."/appData.php?id=".$_POST['imageAppId']."';</script>");
+    exit;    
+     
+}
+
 //Application Details Update
 if(isset($_POST['app_details_submit']))
 {
@@ -259,6 +298,7 @@ if(isset($_POST['facebook_submit']))
             <li role="presentation" class="nav-item"><a class="nav-link font-weight-bold text-dark" href="#admob_settings" id="admob_settings-tab" aria-controls="admob_settings" role="tab" data-toggle="tab">AdMob Settings</a></li>   
             <li role="presentation" class="nav-item"><a class="nav-link font-weight-bold text-dark" href="#facebook_settings" id="facebook_settings-tab" aria-controls="facebook_settings" role="tab" data-toggle="tab">Facebook Settings</a></li>   
             <li role="presentation" class="nav-item"><a class="nav-link font-weight-bold text-dark" href="#apk_settings" id="apk_settings-tab" aria-controls="apk_settings" role="tab" data-toggle="tab">Apks</a></li>   
+            <li role="presentation" class="nav-item"><a class="nav-link font-weight-bold text-dark" href="#slider_settings" id="slider_settings-tab" aria-controls="slider_settings" role="tab" data-toggle="tab">Slider</a></li>   
         </ul>
         <div class="tab-content">
         <div class="tab-pane fade show active" id="application_details" role="tabpanel" aria-labelledby="application_details-tab">
@@ -493,12 +533,65 @@ if(isset($_POST['facebook_submit']))
                 }
             ?>                            
             </ul>                        
+        </div>
+        <div class="tab-pane fade" id="slider_settings" role="tabpanel" aria-labelledby="slider_settings-tab">
+            <?php
+                $sliderImages=array();
+                $querySlider="select * from sliders where app_id=".$appId;
+                $stmt=$connection->prepare($querySlider);
+                $stmt->execute();  
+                if($stmt->rowCount()>0){
+                    while ($rowSlider = $stmt->fetch(PDO::FETCH_ASSOC)){
+                        $image=array(
+                            "Id"=>$rowSlider['Id'],
+                            "image"=>$rowSlider['image']
+                        );
+                        array_push($sliderImages,$image);
+                    }
+                }                  
+            ?>
+            <div class="row" style="margin:10px">
+            <label class="text-danger">*Add Image in order!!</label>
+            </div>
+            <div class="row" style="margin:10px">
+                <button class="col-md-5 btn btn-success" style="margin-top:2px;" onclick="addImage('<?php echo $appId;?>','<?php echo  $rowApp['appName'];?>')">Add Image</button>
+                <div class="col-md-2"></div>
+                <button class="col-md-5 btn btn-primary" style="margin-top:2px;" onclick='imagePreview(<?php echo json_encode($sliderImages);?>)'>Preview</button>
+            </div>
+            <ul class="list-group">
+            <?php                            
+                if(sizeof($sliderImages)>0){
+                    foreach($sliderImages as $image){
+                    ?>    
+                    <li class="list-group-item">                        
+                        <div class="section card">
+                            <div class="section-body card-body">                                
+                                <div class="form-group row">
+                                    <!-- <label class="col-md-3 control-label text-dark">Current Logo :-</label> -->
+                                    <div class="col-md-6">
+                                    <img src="<?php echo $image['image'];?>" alt="Application Logo" style="max-width:300px;max-height:300px;" class="img-thumbnail">
+                                    </div>
+                                    <div class="col-md-6 col-md-offset-3">                                        
+                                        <button class="btn btn-danger"  onclick="deleteImage('<?php echo  $image['Id'];?>','<?php echo  $appId;?>')">Delete Image</button>                                        
+                                    </div>                        
+                                </div>                                                                                                
+                            </div>
+                        </div>
+                    </li>                    
+                   <?php 
+                    }                
+                }
+                else{
+                   echo '<h3 style="margin: auto; padding:auto;">No data found!</h3>';
+                }
+            ?>                            
+            </ul>                        
         </div> 
         </div>
     </div>
 </div>
 
-<!-- Modal -->
+<!--Apk Add Modal -->
 <div class="modal fade" id="addApkModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
     <div class="modal-content">
@@ -558,6 +651,7 @@ if(isset($_POST['facebook_submit']))
   </div>
 </div>
 
+<!-- APk Edit Modal -->
 <div class="modal fade" id="editApkModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
     <div class="modal-content">
@@ -625,6 +719,7 @@ if(isset($_POST['facebook_submit']))
   </div>
 </div>
 
+<!-- APk Delete Modal -->
 <div class="modal fade" id="deleteApkModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -648,17 +743,171 @@ if(isset($_POST['facebook_submit']))
     </div>
   </div>
 </div>
+
+<!-- Image Delete Modal -->
+<div class="modal fade" id="deleteImageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Apk</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">        
+        Are you ure you want to delete It!!
+      </div>
+      <div class="modal-footer">
+      <form action="" name="image_details_edit" method="post" class="form form-horizontal" enctype="multipart/form-data" id="image_details_edit_form"> 
+        <input type="hidden" name="imageId" id="deleteImageId"/>
+        <input type="hidden" name="appId" id="deleteImageAppId"/>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" name="delete_image_submit" class="btn btn-danger">Yes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Image Preview Modal -->
+<div class="modal fade" id="imagePreviewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Slider</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-content">
+            <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <!-- Using JS  -->
+                </ol>
+                <div class="carousel-inner" role="listbox">     
+                        <!-- Using JS  -->
+                </div>
+                <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+                
+
+
+<!-- Add Slide Image Modal -->
+<div class="modal fade" id="addImageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Image to Slider</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">        
+        <form action="" name="image_details_submit" method="post" class="form form-horizontal" enctype="multipart/form-data" id="imgae_add_form"> 
+        <input type="hidden" name="imageAppId" id="imageAppId"/>
+        <input type="hidden" name="imageAppName" id="imageAppName"/>
+            <div class="form-group row">
+                <label class="col-md-3 control-label text-dark">Image :-</label>
+                <div class="col-md-6">
+                    <input type="file" accept="image/gif, image/jpeg, image/png" onchange="readURL(this);" class="form-control" name="image" >                    
+                </div>                        
+            </div>
+            <div class="form-group row">
+                <label class="col-md-3 control-label text-dark">Selected Image :-</label>
+                <div class="col-md-6">
+                    <img src="" id="blah" alt="Slider Image" style="max-height:300px;" class="img-thumbnail">
+                </div>                        
+            </div>  
+            <div class="form-group row">
+                <div class="col-md-9 col-md-offset-3">
+                    <button type="submit" name="slider_image_add" class="btn btn-success">Save</button>
+                </div>
+            </div>
+        </form>
+      </div>      
+    </div>
+  </div>
+</div>
 <?php 
 include("includes/scripts.php");?>
-<script type="text/javascript">    
+<script type="text/javascript">   
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#blah')
+                .attr('src', e.target.result)
+                .width(150)
+                .height(200);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
 function addApk(appId){
     $("#appReferenceId").val(appId);
     $("#addApkModal").modal("show");
 }
+
+function imagePreview(images){
+    var markup = '';
+    count=images.length;
+    for (var index = 0; index < count; index++) {
+        if(index==0){
+            markup += '<li data-target="#carousel-example-1z" data-slide-to="' + index + '" class="active"></li>';
+        }
+        else{
+            markup += '<li data-target="#carousel-example-1z" data-slide-to="' + index + '"></li>';
+        }        
+    }
+    $('#carousel-example-1z .carousel-indicators').html(markup);
+    markup = '';    
+    for (var index = 0; index < count; index++) {
+        if(index==0){
+            markup += '<div class="carousel-item active">';
+            markup += '<img class="d-block w-100" src="' + images[index]['image'] + '" style="width:100%;" alt="slides">'
+            markup += '</div>';
+        }
+        else{
+            markup += '<div class="carousel-item">';
+            markup += '<img class="d-block w-100" src="' + images[index]['image'] + '" style="width:100%;" alt="slides">'
+            markup += '</div>';
+        }
+        
+    }
+    $('#carousel-example-1z .carousel-inner').html(markup);    
+    $("#imagePreviewModal").modal("show");
+    
+}
+
+function addImage(appId,appName){
+    $("#imageAppId").val(appId);
+    $("#imageAppName").val(appName);
+    $("#addImageModal").modal("show");
+}
+
 function deleteApk(appId,refId){
     $("#deleteAppId").val(appId);
     $("#deleteAppRefId").val(refId);
     $("#deleteApkModal").modal("show");
+}
+
+function deleteImage(imageId,appId){
+    $("#deleteImageId").val(imageId);
+    $("#deleteImageAppId").val(appId);
+    $("#deleteImageModal").modal("show");
 }
 function editApk(appId,name,package,status,image,url,reference){
     $("#appEditReferenceId").val(reference);
