@@ -1,0 +1,240 @@
+{
+	"info": {
+		"_postman_id": "36dd4a6c-c35a-446d-9ae7-a6bc5b0948e5",
+		"name": "AppsAdv",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost/AppsAdv/api/Apps/getApp.php?id=1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/AppsAdv/api/Apps/getApp.php?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"AppsAdv",
+						"api",
+						"Apps",
+						"getApp.php"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/AppsAdv/api/Apps/getApps.php",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/AppsAdv/api/Apps/getApps.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"AppsAdv",
+						"api",
+						"Apps",
+						"getApps.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/AppsAdv/api/Adv/getAdvIds.php",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/AppsAdv/api/Adv/getAdvIds.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"AppsAdv",
+						"api",
+						"Adv",
+						"getAdvIds.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/AppsAdv/api/Adv/getAdvId.php?id=1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/AppsAdv/api/Adv/getAdvId.php?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"AppsAdv",
+						"api",
+						"Adv",
+						"getAdvId.php"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/AppsAdv/api/Adv/getAdvIdByApp.php?id=2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/AppsAdv/api/Adv/getAdvIdByApp.php?id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"AppsAdv",
+						"api",
+						"Adv",
+						"getAdvIdByApp.php"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/AppsAdv/api/Adv/getAdvIdByPackage.php?p=com.myApp.xyz",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/AppsAdv/api/Adv/getAdvIdByPackage.php?p=com.myApp.xyz",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"AppsAdv",
+						"api",
+						"Adv",
+						"getAdvIdByPackage.php"
+					],
+					"query": [
+						{
+							"key": "p",
+							"value": "com.myApp.xyz"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/AppsAdv/api/Apps/getAppByPackage.php?p=com.myApp.xyz",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/AppsAdv/api/Apps/getAppByPackage.php?p=com.myApp.xyz",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"AppsAdv",
+						"api",
+						"Apps",
+						"getAppByPackage.php"
+					],
+					"query": [
+						{
+							"key": "p",
+							"value": "com.myApp.xyz"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/AppsAdv/api/Apps/getMoreAppByPackage.php?p=com.hunter.xy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/AppsAdv/api/Apps/getMoreAppByPackage.php?p=com.hunter.xy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"AppsAdv",
+						"api",
+						"Apps",
+						"getMoreAppByPackage.php"
+					],
+					"query": [
+						{
+							"key": "p",
+							"value": "com.hunter.xy"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/AppsAdv/api/Slider/getSliderByPackage.php?p=com.hunter.xyz",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/AppsAdv/api/Slider/getSliderByPackage.php?p=com.hunter.xyz",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"AppsAdv",
+						"api",
+						"Slider",
+						"getSliderByPackage.php"
+					],
+					"query": [
+						{
+							"key": "p",
+							"value": "com.hunter.xyz"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

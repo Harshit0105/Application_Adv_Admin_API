@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2021 at 07:49 AM
+-- Generation Time: Jun 17, 2021 at 11:50 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -99,6 +99,27 @@ INSERT INTO `apps` (`Id`, `status`, `image`, `appName`, `packageName`, `url`, `r
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sliders`
+--
+
+CREATE TABLE `sliders` (
+  `Id` int(11) NOT NULL,
+  `app_id` int(11) NOT NULL,
+  `image` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sliders`
+--
+
+INSERT INTO `sliders` (`Id`, `app_id`, `image`) VALUES
+(1, 14, 'AppImages/Hunter_Killer_1623303914.jpg'),
+(3, 14, 'AppImages/Sliders/Hunter_Killer_1623920167.jpg'),
+(4, 14, 'AppImages/Sliders/Hunter_Killer_1623923381.png');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -141,6 +162,12 @@ ALTER TABLE `apps`
   ADD UNIQUE KEY `packageName` (`packageName`);
 
 --
+-- Indexes for table `sliders`
+--
+ALTER TABLE `sliders`
+  ADD PRIMARY KEY (`Id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -167,6 +194,12 @@ ALTER TABLE `apks`
 --
 ALTER TABLE `apps`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `sliders`
+--
+ALTER TABLE `sliders`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
