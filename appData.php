@@ -23,12 +23,20 @@ require("includes/language.php");
 
 if(isset($_POST['delete_apk_submit'])){
     $appId=$_POST['appId'];     
-    $refId=$_POST['appRefId'];
-    $app_query = "DELETE  FROM apks WHERE Id='$appId' ";    
-    $stmt=$connection->prepare($app_query);
-    $stmt->execute();
+    $refId=$_POST['appRefId'];    
+    $isBanner=$_POST['deleteBannerIsTrue']==1?True:False;
+    if($isBanner){
+        $app_query = "DELETE  FROM banner WHERE Id='$appId' ";    
+        $stmt=$connection->prepare($app_query);
+        $stmt->execute();
+    }    
+    else{
+        $app_query = "DELETE  FROM apks WHERE Id='$appId' ";    
+        $stmt=$connection->prepare($app_query);
+        $stmt->execute();
+    }
     $_SESSION['msg']="12";
-    echo("<script>location.href = '".BASEPATH."/appData.php?id=".$refId."';</script>");
+    echo("<script>location.href = '".BASEPATH."/appData.php?id=".$refId."';</script>");    
 }
 
 if(isset($_POST['delete_image_submit'])){
@@ -124,6 +132,7 @@ if(isset($_POST['apk_details_edit']))
 	$packages = $_POST['packages'];
     $status = isset($_POST['status'])? 1 : 0;
     $url=$_POST['url'];
+    $isBanner=$_POST['editBannerIsTrue']==1? True : False;    
     if(!isset($_FILES['image']) || $_FILES['image']['error'] == UPLOAD_ERR_NO_FILE){
         // echo "File not selected";
         $data = array(                         
@@ -134,9 +143,15 @@ if(isset($_POST['apk_details_edit']))
         );
     }
     else{        
-        // echo "File selected....";
         $imagepath_name = $_FILES['image']['name'];
-        $imagepath = "AppImages/".str_replace(" ","_",$appName)."_".time().".jpg";
+        $ext=pathinfo($imagepath_name,PATHINFO_EXTENSION);	
+        // echo "File selected....";        
+        if($isBanner){
+            $imagepath = "AppImages/Banner/".str_replace(" ","_",$appName)."_".time().".".$ext;    
+        }        
+        else{
+            $imagepath = "AppImages/".str_replace(" ","_",$appName)."_".time().".".$ext;
+        }
         unlink($_POST['app_logo']); 
         move_uploaded_file($_FILES['image']['tmp_name'],$imagepath);	
         $data = array(                         
@@ -148,19 +163,23 @@ if(isset($_POST['apk_details_edit']))
         );
     }        
     $where="WHERE Id=".$_POST['appId'];
-    $settings_edit=UpdateAppDetails($connection,'apks', $data, $where);
+    if($isBanner){
+        $settings_edit=UpdateAppDetails($connection,'banner', $data, $where);
+    }    
+    else{
+        $settings_edit=UpdateAppDetails($connection,'apks', $data, $where);
+    }
     if ($settings_edit > 0)
     {        
         // echo "App Updated Succ...";
-        $_SESSION['msg']="11";
-        if(isset($_POST['isApk'])){
-            echo("<script>location.href = '".BASEPATH."/appData.php?id=".$_POST['appReferenceId']."';</script>");    
-        }
-        else{
-            echo("<script>location.href = '".BASEPATH."/appData.php?id=".$_POST['appId']."';</script>");
-        }
-        
-         exit;
+        // $_SESSION['msg']="11";
+        // if(isset($_POST['isApk'])){
+        //     echo("<script>location.href = '".BASEPATH."/appData.php?id=".$_POST['appReferenceId']."';</script>");    
+        // }
+        // else{
+        //     echo("<script>location.href = '".BASEPATH."/appData.php?id=".$_POST['appId']."';</script>");
+        // }
+        // exit;
     }    
      
 }
@@ -175,17 +194,31 @@ if(isset($_POST['apk_details_submit']))
     $reference =isset($_POST['appReferenceId']) ? $_POST['appReferenceId'] : -1;
     $status = isset($_POST['status'])? 1 : 0;
     $url=$_POST['url'];
-    $imagepath = "AppImages/".str_replace(" ","_",$appName)."_".time().".jpg"; 
-           
-
-    move_uploaded_file($_FILES['image']['tmp_name'],$imagepath);	       	         	   		
-    $query = "INSERT INTO apks (appName,packageName,image,status,url,reference_app) VALUES ( :appName, :pName,:image,:status,:url,:reference)";
-    $stmt=$connection->prepare($query);
-    $stmt->execute(['appName'=>$appName,'pName'=>$packages,'image'=>$imagepath,'status'=>$status,'url'=>$url,"reference"=>$reference]);
-            // echo "App Updated Succ...";
-    $_SESSION['msg']="10";
-    echo("<script>location.href = '".BASEPATH."/appData.php?id=".$_POST['appReferenceId']."';</script>");
-    exit;    
+    $isBanner=$_POST['addBannerIsTrue']==1? True : False;
+    $ext=pathinfo($imagepath_name,PATHINFO_EXTENSION);	
+     
+    if($isBanner){
+        $imagepath = "AppImages/Banner/".str_replace(" ","_",$appName)."_".time().".".$ext;
+        move_uploaded_file($_FILES['image']['tmp_name'],$imagepath);	       	         	   		
+        $query = "INSERT INTO banner (appName,packageName,image,status,url,reference_app) VALUES ( :appName, :pName,:image,:status,:url,:reference)";
+        $stmt=$connection->prepare($query);
+        $stmt->execute(['appName'=>$appName,'pName'=>$packages,'image'=>$imagepath,'status'=>$status,'url'=>$url,"reference"=>$reference]);
+                // echo "App Updated Succ...";
+        $_SESSION['msg']="10";
+        echo("<script>location.href = '".BASEPATH."/appData.php?id=".$_POST['appReferenceId']."';</script>");
+        exit;
+    }
+    else{
+        $imagepath = "AppImages/".str_replace(" ","_",$appName)."_".time().".".$ext;        
+        move_uploaded_file($_FILES['image']['tmp_name'],$imagepath);	       	         	   		
+        $query = "INSERT INTO apks (appName,packageName,image,status,url,reference_app) VALUES ( :appName, :pName,:image,:status,:url,:reference)";
+        $stmt=$connection->prepare($query);
+        $stmt->execute(['appName'=>$appName,'pName'=>$packages,'image'=>$imagepath,'status'=>$status,'url'=>$url,"reference"=>$reference]);
+                // echo "App Updated Succ...";
+        $_SESSION['msg']="10";
+        echo("<script>location.href = '".BASEPATH."/appData.php?id=".$_POST['appReferenceId']."';</script>");
+        exit;    
+    }
      
 }
 
@@ -298,7 +331,7 @@ if(isset($_POST['facebook_submit']))
             <li role="presentation" class="nav-item"><a class="nav-link font-weight-bold text-dark" href="#admob_settings" id="admob_settings-tab" aria-controls="admob_settings" role="tab" data-toggle="tab">AdMob Settings</a></li>   
             <li role="presentation" class="nav-item"><a class="nav-link font-weight-bold text-dark" href="#facebook_settings" id="facebook_settings-tab" aria-controls="facebook_settings" role="tab" data-toggle="tab">Facebook Settings</a></li>   
             <li role="presentation" class="nav-item"><a class="nav-link font-weight-bold text-dark" href="#apk_settings" id="apk_settings-tab" aria-controls="apk_settings" role="tab" data-toggle="tab">Apks</a></li>   
-            <li role="presentation" class="nav-item"><a class="nav-link font-weight-bold text-dark" href="#slider_settings" id="slider_settings-tab" aria-controls="slider_settings" role="tab" data-toggle="tab">Slider</a></li>   
+            <li role="presentation" class="nav-item"><a class="nav-link font-weight-bold text-dark" href="#slider_settings" id="slider_settings-tab" aria-controls="slider_settings" role="tab" data-toggle="tab">Banner</a></li>   
         </ul>
         <div class="tab-content">
         <div class="tab-pane fade show active" id="application_details" role="tabpanel" aria-labelledby="application_details-tab">
@@ -535,57 +568,64 @@ if(isset($_POST['facebook_submit']))
             </ul>                        
         </div>
         <div class="tab-pane fade" id="slider_settings" role="tabpanel" aria-labelledby="slider_settings-tab">
-            <?php
-                $sliderImages=array();
-                $querySlider="select * from sliders where app_id=".$appId;
-                $stmt=$connection->prepare($querySlider);
-                $stmt->execute();  
-                if($stmt->rowCount()>0){
-                    while ($rowSlider = $stmt->fetch(PDO::FETCH_ASSOC)){
-                        $image=array(
-                            "Id"=>$rowSlider['Id'],
-                            "image"=>$rowSlider['image']
-                        );
-                        array_push($sliderImages,$image);
-                    }
-                }                  
-            ?>
-            <div class="row" style="margin:10px">
-            <label class="text-danger">*Add Image in order!!</label>
-            </div>
-            <div class="row" style="margin:10px">
-                <button class="col-md-5 btn btn-success" style="margin-top:2px;" onclick="addImage('<?php echo $appId;?>','<?php echo  $rowApp['appName'];?>')">Add Image</button>
-                <div class="col-md-2"></div>
-                <button class="col-md-5 btn btn-primary" style="margin-top:2px;" onclick='imagePreview(<?php echo json_encode($sliderImages);?>)'>Preview</button>
-            </div>
+            <div class="row" style="margin:10px"><button class="col-12 btn btn-success" onclick="addBanner(<?php echo $appId;?>)">Add Banner</button></div>
             <ul class="list-group">
-            <?php                            
-                if(sizeof($sliderImages)>0){
-                    foreach($sliderImages as $image){
-                    ?>    
+            <?php
+                $queryRef="select * from banner where reference_app=".$appId;
+                $stmt=$connection->prepare($queryRef);
+                $stmt->execute();                
+                if($stmt->rowCount()>0){
+                    $i=1;
+                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){   ?>    
                     <li class="list-group-item">                        
                         <div class="section card">
-                            <div class="section-body card-body">                                
+                            <div class="section-body card-body">
                                 <div class="form-group row">
-                                    <!-- <label class="col-md-3 control-label text-dark">Current Logo :-</label> -->
+                                    <label class="col-md-3 control-label text-dark">Application Name :-</label>
                                     <div class="col-md-6">
-                                    <img src="<?php echo $image['image'];?>" alt="Application Logo" style="max-width:300px;max-height:300px;" class="img-thumbnail">
+                                        <input type="text" name="<?php echo  $row['appName'];?>" id="appName" value="<?php echo  $row['appName'];?>" class="form-control" disabled required>
                                     </div>
-                                    <div class="col-md-6 col-md-offset-3">                                        
-                                        <button class="btn btn-danger"  onclick="deleteImage('<?php echo  $image['Id'];?>','<?php echo  $appId;?>')">Delete Image</button>                                        
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 control-label text-dark">Package Name :-</label>
+                                    <div class="col-md-6">
+                                        <input type="text" name="<?php echo  $row['packageName'];?>" id="packages" value="<?php echo  $row['packageName'];?>" class="form-control" disabled required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 control-label text-dark">Status :-</label>
+                                    <div class="col-md-6">
+                                        <input type="checkbox" value="1" id="status" name="<?php if($row['status']==1){echo "checked";}?>" class="form-control-checkbox" <?php if($row['status']==1){echo "checked";}?> disabled>
                                     </div>                        
-                                </div>                                                                                                
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 control-label text-dark">Current Logo :-</label>
+                                    <div class="col-md-6">
+                                    <img src="<?php echo $row['image'];?>" alt="Application Logo" style="max-width:200px;max-height:200px;" class="img-thumbnail">
+                                    </div>                        
+                                </div>                                
+                                <div class="form-group row">
+                                    <label class="col-md-3 control-label text-dark">Url :-</label>
+                                    <div class="col-md-6">
+                                        <input type="text" name="urlLabel" id="url" value="<?php echo  $row['url'];?>" class="form-control" required disabled>
+                                    </div>                        
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-9 col-md-offset-3">
+                                    <button class="btn btn-warning" onclick="editBanner('<?php echo  $row['Id'];?>','<?php echo  $row['appName'];?>','<?php echo  $row['packageName'];?>','<?php echo  $row['status'];?>','<?php echo $row['image'];?>','<?php echo  $row['url'];?>','<?php echo  $row['reference_app'];?>')">Edit Apk</button>
+                                    <button class="btn btn-danger"  onclick="deleteBanner('<?php echo  $row['Id'];?>','<?php echo  $row['reference_app'];?>')">Delete Apk</button>                                        
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </li>                    
-                   <?php 
-                    }                
+                   <?php }
                 }
                 else{
                    echo '<h3 style="margin: auto; padding:auto;">No data found!</h3>';
                 }
             ?>                            
-            </ul>                        
+            </ul>
         </div> 
         </div>
     </div>
@@ -604,7 +644,7 @@ if(isset($_POST['facebook_submit']))
       <div class="modal-body">
         <form action="" name="apk_details" method="post" class="form form-horizontal" enctype="multipart/form-data" id="apk_details_form"> 
             <input type="hidden" name="appReferenceId" id="appReferenceId"/>
-            <!-- <input type="hidden" name="app_logo" id="apkLogo"/> -->
+            <input type="hidden" name="addBannerIsTrue" id="addBannerIsTrue"/>
             <!-- <input type="hidden" class="current_tab" name="current_tab"> -->
             <div class="section card">
                 <div class="section-body card-body">
@@ -666,7 +706,8 @@ if(isset($_POST['facebook_submit']))
             <input type="hidden" name="appReferenceId" id="appEditReferenceId"/>
             <input type="hidden" name="appId" id="appId"/>
             <input type="hidden" name="isApk" value="true">
-            <!-- <input type="hidden" name="app_logo" id="apkLogo"/> -->
+            <input type="hidden" name="editBannerIsTrue" id="editBannerIsTrue"/>
+            <input type="hidden" name="app_logo" id="editApkLogo"/>
             <!-- <input type="hidden" class="current_tab" name="current_tab"> -->
             <div class="section card">
                 <div class="section-body card-body">
@@ -736,6 +777,7 @@ if(isset($_POST['facebook_submit']))
       <form action="" name="apk_details_edit" method="post" class="form form-horizontal" enctype="multipart/form-data" id="apk_details_edit_form"> 
         <input type="hidden" name="appId" id="deleteAppId"/>
         <input type="hidden" name="appRefId" id="deleteAppRefId"/>
+        <input type="hidden" name="deleteBannerIsTrue" id="deleteBannerIsTrue"/>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit" name="delete_apk_submit" class="btn btn-danger">Yes</button>
         </form>
@@ -857,6 +899,13 @@ function readURL(input) {
 }
 
 function addApk(appId){
+    $("#addBannerIsTrue").val(0);
+    $("#appReferenceId").val(appId);
+    $("#addApkModal").modal("show");
+}
+
+function addBanner(appId){
+    $("#addBannerIsTrue").val(1);
     $("#appReferenceId").val(appId);
     $("#addApkModal").modal("show");
 }
@@ -899,6 +948,14 @@ function addImage(appId,appName){
 }
 
 function deleteApk(appId,refId){
+    $("#deleteBannerIsTrue").val(0);    
+    $("#deleteAppId").val(appId);
+    $("#deleteAppRefId").val(refId);
+    $("#deleteApkModal").modal("show");
+}
+
+function deleteBanner(appId,refId){
+    $("#deleteBannerIsTrue").val(1);    
     $("#deleteAppId").val(appId);
     $("#deleteAppRefId").val(refId);
     $("#deleteApkModal").modal("show");
@@ -910,10 +967,30 @@ function deleteImage(imageId,appId){
     $("#deleteImageModal").modal("show");
 }
 function editApk(appId,name,package,status,image,url,reference){
+    $("#editBannerIsTrue").val(0);
     $("#appEditReferenceId").val(reference);
     $("#appId").val(appId);
     $("#apkEditName").val(name);
     $("#ApkEditPackages").val(package);
+    $("#editApkLogo").val(image);
+    $("#ApkEditLogo").attr("src",image);
+    $("#ApkEditurl").val(url);
+    if(status=='1'){
+        $('#ApkEditStatus').prop('checked', true);        
+    }
+    else{
+        $('#ApkEditStatus').prop('checked', false);        
+    }
+    $("#editApkModal").modal("show");
+}
+
+function editBanner(appId,name,package,status,image,url,reference){
+    $("#editBannerIsTrue").val(1);
+    $("#appEditReferenceId").val(reference);
+    $("#appId").val(appId);
+    $("#apkEditName").val(name);
+    $("#ApkEditPackages").val(package);
+    $("#editApkLogo").val(image);
     $("#ApkEditLogo").attr("src",image);
     $("#ApkEditurl").val(url);
     if(status=='1'){

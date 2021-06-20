@@ -2,7 +2,7 @@
 class Sliders{
     // database connection and table name
     private $conn;
-    private $table_name = "sliders";
+    private $table_name = "banner";
     
     // object properties
     public $id;
@@ -63,7 +63,7 @@ class Sliders{
                     *
                 FROM
                     ' . $this->table_name.' 
-                WHERE app_id=?';
+                WHERE reference_app=?';
     
         // prepare query statement
         $stmt = $this->conn->prepare($query);

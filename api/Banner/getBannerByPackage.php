@@ -31,21 +31,31 @@ if($numApp>0){
     $num = $stmt->rowCount();
     if($num>0){
             // adv array            
-            $image_array=array();
-          
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){        
-                extract($row);    
-                $image=array(
-                    "image"=>$image,                                
-                );                          
-                array_push($image_array, $image);                
-            }
-          
-            // set response code - 200 OK
-            http_response_code(200);
-          
-            // show apps data in json format
-            echo json_encode(array("data"=>$image_array,"result"=>true));    
+        $apps_arr=array();
+        $apps_arr["apps"]=array();
+    
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){        
+            extract($row);
+    
+            
+            $app=array(
+                "id"=>$Id,
+                "appName"=>$appName,
+                "packageName"=>$packageName,
+                "image"=>$image,
+                "status"=>$status,
+                "url"=>$url,
+                "reference_app"=>$reference_app,         
+            );
+  
+            array_push($apps_arr["apps"], $app);
+        }
+    
+        // set response code - 200 OK
+        http_response_code(200);
+    
+        // show apps data in json format
+        echo json_encode(array("data"=>$apps_arr,"result"=>true));    
     }
     else{
         // set response code - 404 Not found

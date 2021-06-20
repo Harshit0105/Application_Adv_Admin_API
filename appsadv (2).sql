@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 17, 2021 at 11:50 AM
+-- Generation Time: Jun 20, 2021 at 07:53 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -71,7 +71,8 @@ CREATE TABLE `apks` (
 
 INSERT INTO `apks` (`Id`, `status`, `image`, `appName`, `packageName`, `url`, `reference_app`) VALUES
 (1, 1, 'AppImages/ABCs_1623470750.jpg', 'ABCs', 'com.hunter.abc', 'https://www.hunter.com/killer', 14),
-(2, 1, 'AppImages/COD_1623471042.jpg', 'COD', 'com.cod.package', 'https://www.xyz.com/cod', 14);
+(2, 1, 'AppImages/COD_1623471042.jpg', 'COD', 'com.cod.package', 'https://www.hunter.com/killer', 14),
+(3, 1, 'AppImages/ABCDEF_1624167076.png', 'ABCDEF', 'com.hunter.xyz', 'https://www.xyz.com/cod', 14);
 
 -- --------------------------------------------------------
 
@@ -99,23 +100,25 @@ INSERT INTO `apps` (`Id`, `status`, `image`, `appName`, `packageName`, `url`, `r
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sliders`
+-- Table structure for table `banner`
 --
 
-CREATE TABLE `sliders` (
+CREATE TABLE `banner` (
   `Id` int(11) NOT NULL,
-  `app_id` int(11) NOT NULL,
-  `image` varchar(255) DEFAULT NULL
+  `status` tinyint(4) NOT NULL DEFAULT 1,
+  `image` varchar(255) DEFAULT NULL,
+  `appName` varchar(255) DEFAULT NULL,
+  `packageName` varchar(255) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `reference_app` int(11) NOT NULL DEFAULT -1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `sliders`
+-- Dumping data for table `banner`
 --
 
-INSERT INTO `sliders` (`Id`, `app_id`, `image`) VALUES
-(1, 14, 'AppImages/Hunter_Killer_1623303914.jpg'),
-(3, 14, 'AppImages/Sliders/Hunter_Killer_1623920167.jpg'),
-(4, 14, 'AppImages/Sliders/Hunter_Killer_1623923381.png');
+INSERT INTO `banner` (`Id`, `status`, `image`, `appName`, `packageName`, `url`, `reference_app`) VALUES
+(3, 1, 'AppImages/Banner/My_Banner_1624168398.png', 'My Banner', 'com.cod.package', 'https://www.hunter.com/killer', 14);
 
 -- --------------------------------------------------------
 
@@ -162,9 +165,9 @@ ALTER TABLE `apps`
   ADD UNIQUE KEY `packageName` (`packageName`);
 
 --
--- Indexes for table `sliders`
+-- Indexes for table `banner`
 --
-ALTER TABLE `sliders`
+ALTER TABLE `banner`
   ADD PRIMARY KEY (`Id`);
 
 --
@@ -187,7 +190,7 @@ ALTER TABLE `ads_id`
 -- AUTO_INCREMENT for table `apks`
 --
 ALTER TABLE `apks`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `apps`
@@ -196,10 +199,10 @@ ALTER TABLE `apps`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT for table `sliders`
+-- AUTO_INCREMENT for table `banner`
 --
-ALTER TABLE `sliders`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `banner`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
